@@ -7,7 +7,7 @@ import './ForgotPasswordPage.css'
 export default function ForgotPasswordPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");   
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -3,9 +3,10 @@ import { useState } from "react";
 import { signInWithGoogle } from "./firebase";
 import ForgotPasswordPage from "./ForgotPasswordPage";
 import CreateAccountPage from "./CreateAccountPage";
+import Home from "./pages/home";
 import './App.css'
 
-function SignInPage({ onForgotPassword, onSignUp }) {
+function SignInPage({ onForgotPassword, onSignUp, onSignIn }) {
   const [user, setUser] = useState(null);
 
   const handleGoogleSignIn = async () => {
@@ -43,14 +44,19 @@ function SignInPage({ onForgotPassword, onSignUp }) {
         </div>
 
         {/* Form */}
-        <form>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            onSignIn();
+          }}
+        >
           <label>Email</label>
           <input type="email" placeholder="you@example.com" />
 
           <label>Password</label>
           <input type="password" placeholder="••••••••" />
 
-          <button className="sign-in-btn">Sign in</button>
+          <button className="sign-in-btn" type="submit">Sign in</button>
         </form>
 
         {/* Footer links */}
@@ -76,11 +82,13 @@ export default function App() {
           <SignInPage
             onForgotPassword={() => navigate("/forgot-password")}
             onSignUp={() => navigate("/create-account")}
+            onSignIn={() => navigate("/home")}
           />
         }
       />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/create-account" element={<CreateAccountPage />} />
+      <Route path="/home" element={<Home />} />
     </Routes>
   );
 }
