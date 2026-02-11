@@ -8,6 +8,7 @@ import CallDoctorPage from "./pages/CallDoctorPage";
 import DoctorProfilePage from "./pages/DoctorProfilePage";
 import BookAppointmentPage from "./pages/BookAppointmentPage";
 import MedicalRecordsPage from "./pages/MedicalRecords/MedicalRecordsPage"; 
+import AppointmentsPage from "./pages/Appointments/AppointmentsPage";
 import './App.css'
 
 function SignInPage({ onForgotPassword, onSignUp, onSignIn }) {
@@ -97,6 +98,7 @@ export default function App() {
       <Route path="/doctor-profile" element={<DoctorProfilePage />} />
       <Route path="/book-appointment" element={<BookAppointmentPage />} />
       <Route path="/medical-records" element={<MedicalRecordsPage />} />
+      <Route path="/appointments" element={<AppointmentsPage />} />
     </Routes>
   );
 }
