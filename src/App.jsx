@@ -12,6 +12,7 @@ import AppointmentsPage from "./pages/Appointments/AppointmentsPage";
 import VaccinationPage from "./pages/Vaccination/vaccinationPage";
 import HelpDeskPage from "./pages/HelpDesk/HelpDeskPage";
 import HealthAssistantPage from "./pages/HealthAssistant/HealthAssistantPage";
+import SettingsPage from "./pages/Settings/SettingsPage";
 import './App.css'
 
 function SignInPage({ onForgotPassword, onSignUp, onSignIn }) {
@@ -105,6 +106,7 @@ export default function App() {
       <Route path="/vaccination" element={<VaccinationPage />} />
       <Route path="/help-desk" element={<HelpDeskPage />} /> 
       <Route path="/health-assistant" element={<HealthAssistantPage />} />
+      <Route path="/settings" element={<SettingsPage />} />
     </Routes>
   );
 }

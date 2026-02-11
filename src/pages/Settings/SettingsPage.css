@@ -1,0 +1,107 @@
+.settings-container {
+  min-height: 100vh;
+  background: #0f172a;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding-bottom: 60px;
+}
+
+.settings-header {
+  background: linear-gradient(135deg, #059669, #047857);
+  padding: 25px 20px 30px 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.settings-header h2 {
+  color: #fff;
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.back-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+
+.settings-list {
+  margin: 32px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.settings-item {
+  background: #1e293b;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 18px 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid #334155;
+}
+
+.settings-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.settings-icon.user { background: #059669; color: #fff; }
+.settings-icon.globe { background: #2563eb; color: #fff; }
+.settings-icon.theme { background: #8b5cf6; color: #fff; }
+.settings-icon.abha { background: #059669; color: #fff; }
+
+.settings-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.settings-desc {
+  color: #94a3b8;
+  font-size: 0.98rem;
+}
+
+.settings-switch {
+  margin-left: auto;
+}
+
+.settings-switch input[type="checkbox"] {
+  width: 36px;
+  height: 20px;
+  accent-color: #059669;
+}
+
+.logout-btn {
+  margin: 32px 20px 0 20px;
+  width: calc(100% - 40px);
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

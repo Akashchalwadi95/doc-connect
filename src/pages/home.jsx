@@ -26,7 +26,7 @@ const Home = () => {
             <FaHeart className="logo-icon" />
             <span>DocConnect AI</span>
           </div>
-          <div className="settings-icon">
+          <div className="settings-icon" onClick={() => navigate("/settings")} style={{ cursor: "pointer" }}>
             <FaCog />
           </div>
         </div>
