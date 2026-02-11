@@ -10,6 +10,7 @@ import BookAppointmentPage from "./pages/BookAppointmentPage";
 import MedicalRecordsPage from "./pages/MedicalRecords/MedicalRecordsPage"; 
 import AppointmentsPage from "./pages/Appointments/AppointmentsPage";
 import VaccinationPage from "./pages/Vaccination/vaccinationPage";
+import HelpDeskPage from "./pages/HelpDesk/HelpDeskPage";
 import './App.css'
 
 function SignInPage({ onForgotPassword, onSignUp, onSignIn }) {
@@ -101,6 +102,7 @@ export default function App() {
       <Route path="/medical-records" element={<MedicalRecordsPage />} />
       <Route path="/appointments" element={<AppointmentsPage />} />
       <Route path="/vaccination" element={<VaccinationPage />} />
+      <Route path="/help-desk" element={<HelpDeskPage />} /> 
     </Routes>
   );
 }

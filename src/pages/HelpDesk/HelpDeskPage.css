@@ -1,0 +1,144 @@
+.helpdesk-container {
+  min-height: 100vh;
+  background: #0f172a;
+  color: #222;
+  font-family: Arial, sans-serif;
+}
+
+.helpdesk-header {
+  background: linear-gradient(135deg, #059669, #047857);
+  padding: 25px 20px 30px 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.helpdesk-header h2 {
+  color: #fff;
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.back-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+
+.emergency-section {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  margin: 32px 20px 0 20px;
+  padding: 24px 24px 18px 24px;
+  border: 1px solid #fca5a5;
+}
+
+.emergency-alert {
+  color: #ef4444;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.emergency-desc {
+  color: #ef4444;
+  margin-bottom: 12px;
+}
+
+.emergency-call-btn {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  width: 100%;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.faq-section {
+  margin: 32px 20px 0 20px;
+}
+
+.faq-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.faq-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+  padding: 16px 18px;
+  border: 1px solid #e5e7eb;
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #222;
+  cursor: pointer;
+}
+
+.faq-answer {
+  margin-top: 10px;
+  color: #059669;
+  font-size: 1rem;
+}
+
+.aid-section {
+  margin: 32px 20px 0 20px;
+}
+
+.aid-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.aid-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+  padding: 16px 18px;
+  border: 1px solid #e5e7eb;
+}
+
+.aid-question {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #222;
+  cursor: pointer;
+}
+
+.aid-answer {
+  margin-top: 10px;
+  color: #059669;
+  font-size: 1rem;
+}
