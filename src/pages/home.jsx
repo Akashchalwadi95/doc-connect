@@ -106,7 +106,7 @@ const Home = () => {
         <div className="grid-card" onClick={() => navigate("/history")} style={{ cursor: "pointer" }}>
           <div className="icon-box purple">
             <FaHistory />
-          </div>
+          </div> 
           <h4>History</h4>
         </div>
       </div>
