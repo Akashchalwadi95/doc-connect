@@ -1,0 +1,275 @@
+.call-doctor-header {
+  background: linear-gradient(135deg, #059669, #047857);
+  padding: 25px 20px 30px 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  position: relative;
+}
+
+.call-doctor-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.call-doctor-header h2 {
+  margin: 0;
+}
+
+.call-doctor-search {
+  margin-top: 20px;
+}
+
+.call-doctor-search input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  margin-top: 16px;
+  box-sizing: border-box;
+}
+
+.emergency-section {
+  margin: 24px 0 0 0;
+  padding: 0 20px;
+}
+
+.emergency-label {
+  color: #ef4444;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.emergency-card {
+  background: #1e293b;
+  border: 1px solid #ef4444;
+  border-radius: 18px;
+  margin-top: 12px;
+  padding: 18px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.emergency-card-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.emergency-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  color: #ef4444;
+  font-weight: bold;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emergency-card-details {
+}
+
+.emergency-card-details .name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.emergency-card-details .desc,
+.emergency-card-details .extra {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.emergency-card-details .time {
+  color: #94a3b8;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.emergency-card-actions {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.call-now-btn {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 0;
+  width: 90%;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.emergency-alert-btn {
+  background: #1e293b;
+  border: 1px solid #ef4444;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+}
+
+.all-doctors-label {
+  margin: 32px 0 0 0;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+.sos-fab-container {
+  position: fixed;
+  right: 24px;
+  bottom: 32px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sos-fab {
+  background: #ef4444;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 24px #ef4444aa;
+  position: relative;
+}
+
+.sos-fab-alert {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 4px #ef4444;
+}
+
+.sos-fab-label {
+  color: #fff;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.call-doctor-add-btn {
+  margin-left: auto;
+  background: rgba(255,255,255,0.2);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 0.2s;
+}
+.call-doctor-add-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(60, 60, 60, 0.5);
+  z-index: 1001;
+}
+
+.modal {
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #222;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 24px 16px 16px 16px;
+  width: 95%;
+  max-width: 500px;
+  z-index: 1002;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.add-doctor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.add-doctor-form input,
+.add-doctor-form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  resize: none;
+}
+
+.add-doctor-form textarea {
+  min-height: 48px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.add-doctor-btn {
+  background: #059669;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-doctor-btn:hover {
+  background: #047857;
+}

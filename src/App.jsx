@@ -4,6 +4,8 @@ import { signInWithGoogle } from "./firebase";
 import ForgotPasswordPage from "./ForgotPasswordPage";
 import CreateAccountPage from "./CreateAccountPage";
 import Home from "./pages/home";
+import CallDoctorPage from "./pages/CallDoctorPage";
+import DoctorProfilePage from "./pages/DoctorProfilePage";
 import './App.css'
 
 function SignInPage({ onForgotPassword, onSignUp, onSignIn }) {
@@ -89,6 +91,8 @@ export default function App() {
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/create-account" element={<CreateAccountPage />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/call-doctor" element={<CallDoctorPage />} />
+      <Route path="/doctor-profile" element={<DoctorProfilePage />} />
     </Routes>
   );
 }

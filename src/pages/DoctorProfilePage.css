@@ -1,0 +1,119 @@
+.doctor-profile-container {
+  min-height: 100vh;
+  background: #0f172a;
+  color: #222;
+  font-family: Arial, sans-serif;
+  padding-bottom: 40px;
+}
+
+.doctor-profile-header {
+  background: linear-gradient(135deg, #059669, #047857);
+  padding: 25px 20px 30px 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.doctor-profile-header h2 {
+  color: #fff;
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.back-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+
+.doctor-profile-card {
+  background: #fff;
+  margin: 32px auto 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  max-width: 600px;
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doctor-profile-avatar {
+  width: 80px;
+  height: 80px;
+  background: #bbf7d0;
+  color: #059669;
+  border-radius: 50%;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.doctor-profile-photo-link {
+  color: #059669;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.doctor-profile-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.doctor-profile-form label {
+  font-size: 1rem;
+  color: #222;
+  margin-top: 8px;
+}
+
+.doctor-profile-form input,
+.doctor-profile-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: #f9fafb;
+  margin-bottom: 2px;
+  resize: none;
+}
+
+.doctor-profile-form textarea {
+  min-height: 48px;
+}
+
+.save-profile-btn {
+  margin-top: 18px;
+  width: 100%;
+  background: linear-gradient(90deg, #059669, #047857);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: not-allowed;
+  opacity: 0.9;
+}

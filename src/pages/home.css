@@ -122,6 +122,26 @@
   color: #a855f7;
 }
 
+.orange {
+  background: rgba(255, 122, 0, 0.2);
+  color: #ff7a00;
+}
+
+.pink {
+  background: rgba(236, 72, 153, 0.2);
+  color: #ec4899;
+}
+
+.cyan {
+  background: rgba(34, 211, 238, 0.2);
+  color: #22d3ee;
+}
+
+.purple {
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+}
+
 /* EMERGENCY BUTTON */
 .emergency-btn {
   position: fixed;
