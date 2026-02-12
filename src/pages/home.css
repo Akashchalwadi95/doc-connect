@@ -4,15 +4,17 @@
   color: white;
   font-family: Arial, sans-serif;
   padding-bottom: 80px;
+  position: relative;
 }
 
 /* HEADER */
 .header {
   background: linear-gradient(135deg, #059669, #047857);
-  padding: 25px 20px 70px 20px;
+  padding: 25px 20px 50px 20px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   position: relative;
+  z-index: 1;
 }
 
 .header-top {
@@ -55,10 +57,12 @@
   margin: -40px 20px 20px 20px;
   padding: 15px;
   border-radius: 20px;
-  display: flex;
+  display: flex; 
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  position: relative;
 }
 
 .card-left {
