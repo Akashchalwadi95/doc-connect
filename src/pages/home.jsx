@@ -13,9 +13,15 @@ import {
   FaHistory,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 
 const Home = () => {
   const navigate = useNavigate();
+  const auth = getAuth();
+  const user = auth.currentUser; 
+
+  // Use displayName if available, else fallback to email, else "User"
+  const userName = user?.displayName || user?.email || "User";
 
   return (
     <div className="home-container">
@@ -29,11 +35,11 @@ const Home = () => {
           <div className="settings-icon" onClick={() => navigate("/settings")} style={{ cursor: "pointer" }}>
             <FaCog />
           </div>
-        </div>
+        </div>  
 
         <div className="header-text">
           <p>Hello,</p>
-          <h2>Shadow</h2>
+          <h2>{userName}</h2>
           <span>How can we help you today?</span>
         </div>
       </div>    

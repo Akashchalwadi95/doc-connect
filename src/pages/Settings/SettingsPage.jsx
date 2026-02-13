@@ -1,8 +1,24 @@
 import React from "react";
 import { FaArrowLeft, FaUser, FaGlobe, FaMoon, FaIdBadge, FaSignOutAlt } from "react-icons/fa";
 import "./SettingsPage.css";
+import { signOut, getAuth } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-const SettingsPage = () => (
+const SettingsPage = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const auth = getAuth();
+    try{
+      await signOut(auth);
+      navigate("/"); // redirect to login page
+    } catch (error) {
+      alert("Logout failed. Please try again.");
+    }
+};
+ 
+return (
+
   <div className="settings-container">
     <div className="settings-header">
       <button className="back-btn" onClick={() => window.history.back()}>
@@ -43,11 +59,12 @@ const SettingsPage = () => (
         </div>
       </div>
     </div>
-    <button className="logout-btn">
+    <button className="logout-btn" onClick={handleLogout}>
       <FaSignOutAlt style={{ marginRight: 8 }} />
       Logout
     </button>
   </div>
 );
+};
 
 export default SettingsPage;
