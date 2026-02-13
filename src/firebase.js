@@ -11,7 +11,7 @@ const firebaseConfig = {
   measurementId: "G-90W561SFK7"
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 

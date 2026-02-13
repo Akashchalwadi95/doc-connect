@@ -85,3 +85,15 @@ input {
 .create-btn:hover {
   opacity: 0.95;
 }
+
+.eye-icon {
+  font-size: 1.2em;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.signin-link {
+  font-size: 15px;
+  color: #64748b;
+}

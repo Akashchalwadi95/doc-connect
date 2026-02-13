@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "./firebase"; // Make sure this is exported from your firebase.js
+import { auth } from "../firebase"; // Make sure this is exported from your firebase.js
 import { sendPasswordResetEmail } from "firebase/auth";
 import './ForgotPasswordPage.css'
 
@@ -14,9 +14,9 @@ export default function ForgotPasswordPage() {
     setMessage("");
     try {
       await sendPasswordResetEmail(auth, email);
-      setMessage("Password reset link sent! Check your email.");
+      setMessage("If an account with that email exists, a password reset link has been sent.");
     } catch (error) {
-      setMessage(error.message);
+      setMessage("If an account with that email exists, a password reset link has been sent.");
     }
   };
 
@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
             <span className="icon">✉️</span>
             <input
               type="email"
-              placeholder="you@example.com"
+              placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
