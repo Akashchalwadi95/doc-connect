@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaPhoneAlt, FaExclamationTriangle, FaClock, FaPlus, FaTimes } from "react-icons/fa";
 import "./home.css";
 import "./CallDoctorPage.css";
@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {isValidEmail} from "../utils/Sanitization";
-import { getFirestore, collection, doc, addDoc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, addDoc, getDoc, updateDoc, deleteDoc, getDocs } from "firebase/firestore";
 import { app } from "../firebase";
 
 const AddDoctorModal = ({ onClose }) => {  
@@ -236,10 +236,24 @@ const AddDoctorModal = ({ onClose }) => {
 
 const CallDoctorPage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [doctors, setDoctors] = useState([]);
   const navigate = useNavigate();
 
+  // Fetch doctors from Firestore
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      const db = getFirestore(app);
+      const snapshot = await getDocs(collection(db, "doctors"));
+      const docs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setDoctors(docs);
+    };
+    fetchDoctors();
+  }, [showModal]); // refetch when modal closes (after adding)
+
+  const emergencyDoctors = doctors.filter(doc => doc.emergency);
+
   return (
-    <div className="home-container">
+    <div className="home-container"> 
       <ToastContainer /> 
       {/* Header */}
       <div className="call-doctor-header">
@@ -256,34 +270,47 @@ const CallDoctorPage = () => {
       </div>
 
       {/* Emergency Available */}
+      
       <div className="emergency-section">
         <div className="emergency-label">
           <FaExclamationTriangle /> Emergency Available
         </div>
-        <div
-          className="emergency-card">
-          <div className="emergency-card-row"
-          style={{ cursor: "pointer" }}
-          onClick={() => navigate("/doctor-profile")}
-          >
-            <div className="emergency-avatar">h</div>
-            <div className="emergency-card-details">
-              <div className="name">hjkl</div>
-              <div className="desc">asdfgasdfg</div>
-              <div className="extra">wertyui</div>
-              <div className="time">
-                <FaClock /> we
+        <div className="all-doctors-list">
+          {emergencyDoctors.length === 0 ? (
+            <div>No emergency doctors found.</div>
+          ) : (
+            emergencyDoctors.map(doc => (
+              <div key={doc.id} className="emergency-card">
+                <div
+                  className="emergency-card-row"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/doctor-profile")}
+                >
+                  <div className="emergency-avatar">
+                    {doc.name ? doc.name.charAt(0).toUpperCase() : "D"}
+                  </div>
+                  <div className="emergency-card-details">
+                    <div className="name">{doc.name}</div>
+                    <div className="desc">{doc.specialty}</div>
+                    <div className="extra">
+                      {doc.qualifications} | {doc.experience} yrs
+                    </div>
+                    <div className="time">
+                      <FaClock /> {doc.hours}
+                    </div>
+                  </div>
+                </div>
+                <div className="emergency-card-actions">
+                  <button className="call-now-btn">
+                    <FaPhoneAlt /> Call Now
+                  </button>
+                  <div className="emergency-alert-btn">
+                    <FaExclamationTriangle color="#ef4444" />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="emergency-card-actions">
-            <button className="call-now-btn">
-              <FaPhoneAlt /> Call Now
-            </button>
-            <div className="emergency-alert-btn">
-              <FaExclamationTriangle color="#ef4444" />
-            </div>
-          </div>
+            ))
+          )}
         </div>
       </div>
 
@@ -305,6 +332,7 @@ const CallDoctorPage = () => {
 
       {/* Modal */}
       {showModal && <AddDoctorModal onClose={() => setShowModal(false)} />}
+
     </div>
   );
 };

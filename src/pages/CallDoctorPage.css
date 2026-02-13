@@ -302,3 +302,23 @@
   min-height: 90px;
   margin-bottom: 8px;
 }
+
+.doctors-list {
+  margin: 16px 0;
+}
+.doctor-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #fafafa;
+}
+.doctor-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #000;
+}
+.doctor-specialty,
+.doctor-phone {
+  color: #000;
+}
