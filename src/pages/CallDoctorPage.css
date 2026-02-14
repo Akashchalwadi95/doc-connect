@@ -322,3 +322,59 @@
 .doctor-phone {
   color: #000;
 }
+
+.all-doctors-card {
+  background: #fff;
+  border: 1px solid #059669;
+  border-radius: 18px;
+  margin-top: 12px;
+  padding: 18px;
+  box-shadow: 0px 4px 16px rgba(5, 150, 105, 0.08);
+  position: relative;
+  transition: box-shadow 0.2s;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.all-doctors-card:hover {
+  box-shadow: 0px 8px 24px rgba(5, 150, 105, 0.18);
+}
+
+.all-doctors-card-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.all-doctors-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #e0f2f1;
+  color: #059669;
+  font-weight: bold;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.all-doctors-card-details .name {
+  font-weight: bold;
+  font-size: 18px;
+  color: #059669;
+}
+
+.all-doctors-card-details .desc,
+.all-doctors-card-details .extra,
+.all-doctors-card-details .email {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.all-doctors-card-details .time {
+  color: #64748b;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

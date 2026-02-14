@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {isValidEmail} from "../utils/Sanitization";
 import { getFirestore, collection, doc, addDoc, getDoc, updateDoc, deleteDoc, getDocs } from "firebase/firestore";
 import { app } from "../firebase";
+import { callDoctor } from "../components/callFunctionality";
 
 const AddDoctorModal = ({ onClose }) => {  
   const [name, setName] = useState("");
@@ -251,6 +252,7 @@ const CallDoctorPage = () => {
   }, [showModal]); // refetch when modal closes (after adding)
 
   const emergencyDoctors = doctors.filter(doc => doc.emergency);
+  const nonEmergencyDoctors = doctors.filter(doc => !doc.emergency);
 
   return (
     <div className="home-container"> 
@@ -269,7 +271,7 @@ const CallDoctorPage = () => {
         </div>
       </div>
 
-      {/* Emergency Available */}
+      {/* Emergency Available */} 
       
       <div className="emergency-section">
         <div className="emergency-label">
@@ -301,7 +303,7 @@ const CallDoctorPage = () => {
                   </div>
                 </div>
                 <div className="emergency-card-actions">
-                  <button className="call-now-btn">
+                  <button className="call-now-btn" onClick={() => callDoctor(doc)}>
                     <FaPhoneAlt /> Call Now
                   </button>
                   <div className="emergency-alert-btn">
@@ -314,9 +316,44 @@ const CallDoctorPage = () => {
         </div>
       </div>
 
-      {/* All Doctors */}
+      {/* All Doctors Label */}
       <div className="all-doctors-label">
         All Doctors
+      </div>
+
+      {/* Non-Emergency Doctors */}
+      <div className="all-doctors-list">
+        {nonEmergencyDoctors.length === 0 ? (
+          <div>No non-emergency doctors found.</div>
+        ) : (
+          nonEmergencyDoctors.map(doc => (
+            <div key={doc.id} className="all-doctors-card">
+              <div
+                className="all-doctors-card-row"
+                style={{ cursor: "pointer" }}  
+                onClick={() => navigate("/doctor-profile")}
+              >
+                <div className="all-doctors-avatar">  
+                  {doc.name ? doc.name.charAt(0).toUpperCase() : "D"}
+                </div>
+                <div className="all-doctors-card-details">
+                  <div className="name">{doc.name}</div>
+                  <div className="desc">{doc.specialty}</div>
+                  <div className="extra">
+                    {doc.qualifications} | {doc.experience} yrs
+                  </div>
+                  <div className="time">
+                    <FaClock /> {doc.hours}
+                  </div>
+                  <div className="email">{doc.email}</div>
+                </div>
+              </div>
+              <button className="call-now-btn" style={{ marginTop: "12px", width: "100%" }} onClick={() => callDoctor(doc)}>
+                <FaPhoneAlt /> Call Now
+              </button>
+            </div>
+          ))
+        )}
       </div>
 
       {/* Emergency Floating Button */}
