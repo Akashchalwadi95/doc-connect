@@ -5,7 +5,7 @@
   font-family: Arial, sans-serif;
 }
 
-.vaccination-header {
+.vaccination-header { 
   background: linear-gradient(135deg, #059669, #047857);
   padding: 25px 20px 30px 20px;
   border-bottom-left-radius: 30px;
@@ -22,10 +22,14 @@
   font-weight: bold;
 }
 
+.header-spacer {
+  flex: 1;
+}
+
 .back-btn {
   background: rgba(255,255,255,0.2);
   border: none;
-  border-radius: 8px;
+  border-radius: 8px; 
   width: 36px;
   height: 36px;
   display: flex;
@@ -131,6 +135,29 @@
   gap: 8px;
 }
 
+.input-icon-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon-abs {
+  position: absolute;
+  right: 12px;         /* <-- changed from left to right */
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8b5cf6;
+  font-size: 1.1rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.input-icon-wrapper input[type="date"],
+.input-icon-wrapper input[type="time"] {
+  padding-left: 10px;      /* normal left padding */
+  padding-right: 36px;     /* space for the icon on the right */
+}
+
 .add-reminder-btn {
   margin-top: 18px;
   width: 100%;
@@ -194,6 +221,11 @@
   margin-top: 8px;
 }
 
-.reminder-details svg {
-  margin-right: 6px;
+.reminder-notes {
+  margin-top: 8px;
+  color: #475569;
+  background: #f1f5f9;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 1rem;
 }
