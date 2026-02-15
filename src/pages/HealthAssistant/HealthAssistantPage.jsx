@@ -43,13 +43,6 @@ const HealthAssistantPage = () => {
     const apiMessages = [systemMessage, ...messages, userMessage];
     setPrompt("");
 
-    console.log("Sending to Groq:", { 
-      model: "meta-llama/llama-4-maverick-17b-128e-instruct",
-      messages: apiMessages,
-      max_tokens: 512,
-      temperature: 0.7
-    });
-
     try {
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -70,29 +63,48 @@ const HealthAssistantPage = () => {
       }
       const assistantMessage = {
         role: "assistant",
-        content: stripMarkdown(data.choices?.[0]?.message?.content || "Sorry, I couldn't understand that.")
+        content: enforceNumberedList(formatNumberedList(stripMarkdown(data.choices?.[0]?.message?.content || "Sorry, I couldn't understand that.")))
       };
       setMessages((prev) => [...prev, userMessage, assistantMessage]);
+
+      // Store in Firestore
+      const db = getFirestore(app);
+      await addDoc(collection(db, "assistantChats"), {
+        user: userMessage.content,
+        assistant: assistantMessage.content,
+        timestamp: new Date()
+      });
     } catch (err) {
+      const assistantMessage = {
+        role: "assistant",
+        content: "Sorry, there was an error connecting to the assistant."
+      };
       setMessages((prev) => [
         ...prev,
         userMessage,
-        { role: "assistant", content: "Sorry, there was an error connecting to the assistant." }
+        assistantMessage
       ]);
+      // Store error in Firestore
+      const db = getFirestore(app);
+      await addDoc(collection(db, "assistantChats"), {
+        user: userMessage.content,
+        assistant: assistantMessage.content,
+        timestamp: new Date()
+      });
     }
     setLoading(false);
-
-    const db = getFirestore(app);
-    await addDoc(collection(db, "assistantChats"), {
-      user: userMessage.content,
-      assistant: assistantMessage.content,
-      timestamp: new Date()
-    });
   };
 
   const systemMessage = {
     role: "system",
-    content: "You are a professional medical AI health assistant. Respond to user queries with helpful, accurate, and friendly medical guidance. Always reply in plain text, without any markdown, bullet points, or special formatting. Do not use asterisks, lists, or bold text. Always remind users to consult healthcare professionals for serious concerns."
+    content: `You are a professional medical AI health assistant. 
+Respond to user queries with helpful, accurate, and friendly medical guidance. 
+Always reply in plain text, without any markdown, bullet points, or special formatting. 
+Do not use asterisks, lists, or bold text. 
+Always remind users to consult healthcare professionals for serious concerns. 
+Keep your answers very short and concise. 
+Always format your responses as numbered points (1., 2., etc.), with each point on a new line. 
+This format applies to all answers, including summaries.`
   };
 
   const stripMarkdown = (text) =>
@@ -104,6 +116,17 @@ const HealthAssistantPage = () => {
       .replace(/^\d+\.\s+/gm, '')      // Remove numbered lists
       .replace(/[_~]/g, '');           // Remove other markdown
 
+  const formatNumberedList = (text) =>
+    text.replace(/(\d+\..*?)(?=\d+\.|$)/gs, "$1\n");
+
+  const enforceNumberedList = (text) => {
+    // Split into lines, ignore empty lines
+    const lines = text.split('\n').filter(line => line.trim() !== '');
+    // If already numbered, return as is
+    if (lines.every(line => /^\d+\./.test(line.trim()))) return text;
+    // Otherwise, add numbers
+    return lines.map((line, idx) => `${idx + 1}. ${line.trim()}`).join('\n');
+  };
 
   const summarizeHealthStatus = async () => {
     setLoading(true);
@@ -133,7 +156,7 @@ const HealthAssistantPage = () => {
       }
       const assistantMessage = {
         role: "assistant",
-        content: stripMarkdown(data.choices?.[0]?.message?.content || "Sorry, I couldn't understand that.")
+        content: enforceNumberedList(formatNumberedList(stripMarkdown(data.choices?.[0]?.message?.content || "Sorry, I couldn't understand that.")))
       };
       setMessages((prev) => [...prev, userMessage, assistantMessage]);
 
