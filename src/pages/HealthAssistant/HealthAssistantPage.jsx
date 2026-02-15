@@ -7,7 +7,7 @@ import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs } from
 import { app } from "../../firebase"; 
 
 const HealthAssistantPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate();     
   const apiKey = import.meta.env.VITE_APP_GROQ_API_KEY;
 
   const [prompt, setPrompt] = useState("");
