@@ -8,6 +8,7 @@ import { app } from "../../firebase";
 
 const HealthAssistantPage = () => {
   const navigate = useNavigate();
+  const apiKey = import.meta.env.VITE_APP_GROQ_API_KEY;
 
   const [prompt, setPrompt] = useState("");
   const [messages, setMessages] = useState([]); // {role: "user"|"assistant", content: string}
@@ -48,7 +49,7 @@ const HealthAssistantPage = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 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"
+          "Authorization": `Bearer ${apiKey}`
         },
         body: JSON.stringify({
           model: "meta-llama/llama-4-maverick-17b-128e-instruct",
@@ -141,7 +142,7 @@ This format applies to all answers, including summaries.`
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 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"
+          "Authorization": `Bearer ${apiKey}`
         },
         body: JSON.stringify({
           model: "meta-llama/llama-4-maverick-17b-128e-instruct",
